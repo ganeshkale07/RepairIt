@@ -1,0 +1,22 @@
+<div class="flex justify-center md:justify-end">
+  <a
+    [routerLink]="['login']"
+    class="btn text-primary font-bold my-auto p-2 rounded-full ml-2 border-primary md:border-2 hover:bg-primary border-[#059669] text-[#059669] hover:bg-[#059669] hover:text-zinc-50 transition ease-out duration-500"
+    >Log in</a
+  >
+  <a
+    [routerLink]="['signup']"
+    class="btn text-primary font-bold my-auto p-2 rounded-full ml-2 border-primary md:border-2 hover:bg-primary border-[#059669] text-[#059669] hover:bg-[#059669] hover:text-zinc-50 transition ease-out duration-500"
+    >Sign up</a
+  >
+  <a
+    [routerLink]="['cart']"
+    class="btn text-primary font-bold my-auto p-2 rounded-full ml-2 border-primary md:border-2 hover:bg-primary border-[#059669] text-[#059669] hover:bg-[#059669] hover:text-zinc-50 transition ease-out duration-500"
+    >Cart <b *ngIf="cartItem$ | async as cartItem">{{ cartItem.length }}</b></a
+  >
+  <a
+    [routerLink]="['create-product']"
+    class="btn text-primary font-bold my-auto p-2 rounded-full ml-2 border-primary md:border-2 hover:bg-primary border-[#059669] text-[#059669] hover:bg-[#059669] hover:text-zinc-50 transition ease-out duration-500"
+    >Add Product</a
+  >
+</div>
