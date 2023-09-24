@@ -13,6 +13,10 @@ import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+//import reactive form module
+import { ReactiveFormsModule } from '@angular/forms';
+//import template driven form module
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,13 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     CreateProductComponent,
     EditProductComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,33 +1,38 @@
 <header class="mt-4"></header>
 
-<header class="mt-4"></header>
-
-<form>
+<form [formGroup]="createForm" (ngSubmit)="onCreateFormSubmit()">
   <div class="space-y-12">
     <div class="border-b border-gray-900/10 pb-12">
-      <div class="mt-10 grid md:grid-cols-6 gap-x-6 gap-y-8 sm:grid-cols-1">
-        <div class="md:col-span-2">
+      <div class="mt-10 grid md:grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-1">
+        <div class="md:col-span-1">
           <h4
             class="text-emerald-900 text-center font-semibold text-2xl leading-none tracking-wider mt-5 border-r-8 border-2 border-emerald-600 p-2"
           >
             Edit Tool In Inventory
           </h4>
         </div>
-        <div class="md:col-span-2">
+        <div class="md:col-span-1">
           <div class="sm:col-span-2">
             <label
               for="name"
               class="block text-sm font-medium leading-6 text-gray-900"
-              >Name</label
-            >
+              >Name
+            </label>
             <div class="mt-2">
               <input
                 type="text"
                 name="name"
                 id="name"
                 autocomplete="given-name"
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                formControlName="name"
+                class="block w-full rounded-md border-0 py-1 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-emerald-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 focus:outline-none sm:text-sm sm:leading-6"
               />
+              <p
+                *ngIf="name.invalid && name.dirty && name.touched"
+                class="text-rose-600"
+              >
+                Required field
+              </p>
             </div>
           </div>
 
@@ -64,6 +69,7 @@
                       name="file-upload"
                       type="file"
                       class="sr-only"
+                      formControlName="imageLink"
                     />
                   </label>
                   <p class="pl-1">or drag and drop</p>
@@ -86,8 +92,17 @@
                 id="InventedBy"
                 name="invented_by"
                 type="text"
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                formControlName="inventedBy"
+                class="block w-full rounded-md border-0 py-1 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-emerald-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 focus:outline-none sm:text-sm sm:leading-6"
               />
+              <p
+                *ngIf="
+                  inventedBy.invalid && inventedBy.dirty && inventedBy.touched
+                "
+                class="text-rose-600"
+              >
+                Required field
+              </p>
             </div>
           </div>
 
@@ -102,9 +117,16 @@
                 type="text"
                 name="currency"
                 id="Currency"
-                disabled
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                formControlName="currency"
+                readonly
+                class="block w-full rounded-md border-0 py-1 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-emerald-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 focus:outline-none sm:text-sm sm:leading-6"
               />
+              <p
+                *ngIf="currency.invalid && currency.dirty && currency.touched"
+                class="text-rose-600"
+              >
+                Required field
+              </p>
             </div>
           </div>
 
@@ -116,11 +138,18 @@
             >
             <div class="mt-2">
               <input
-                type="text"
+                type="number"
                 name="price"
                 id="Price"
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                formControlName="price"
+                class="block w-full rounded-md border-0 py-1 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-emerald-300 focus:ring-2 focus:ring-inset focus:ring-emerald-600 focus:outline-none sm:max-w-xs sm:text-sm sm:leading-6"
               />
+              <p
+                *ngIf="price.invalid && price.dirty && price.touched"
+                class="text-rose-600"
+              >
+                Required field
+              </p>
             </div>
           </div>
 
@@ -132,18 +161,25 @@
             >
             <div class="mt-2">
               <input
-                type="text"
+                type="number"
                 name="qty"
                 id="Qty"
-                disabled
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                formControlName="qty"
+                readonly
+                class="block w-full rounded-md border-0 py-1 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-emerald-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 focus:outline-none sm:text-sm sm:leading-6"
               />
+              <p
+                *ngIf="qty.invalid && qty.dirty && qty.touched"
+                class="text-rose-600"
+              >
+                Required field
+              </p>
             </div>
           </div>
 
           <div class="sm:col-span-2">
             <label
-              for="postal-code"
+              for="concept"
               class="block text-sm font-medium leading-6 text-gray-900"
             >
               Physics Concept</label
@@ -151,11 +187,21 @@
             <div class="mt-2">
               <input
                 type="text"
-                name="postal-code"
-                id="postal-code"
-                autocomplete="postal-code"
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                name="physicsConcept"
+                id="concept"
+                formControlName="physicsConcept"
+                class="block w-full rounded-md border-0 py-1 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-emerald-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 focus:outline-none sm:text-sm sm:leading-6"
               />
+              <p
+                *ngIf="
+                  physicsConcept.invalid &&
+                  physicsConcept.dirty &&
+                  physicsConcept.touched
+                "
+                class="text-rose-600"
+              >
+                Required field
+              </p>
             </div>
           </div>
 
@@ -171,7 +217,7 @@
                 name="postal-code"
                 id="postal-code"
                 autocomplete="postal-code"
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-emerald-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 focus:outline-none sm:text-sm sm:leading-6"
               />
             </div>
           </div> -->
@@ -179,13 +225,15 @@
           <div class="flex justify-start mt-4 xs:flex-col">
             <button
               type="button"
+              (click)="createFormReset()"
               class="btn bg-emerald-600 text-zinc-50 font-bold px-4 py-2 hover:bg-emerald-500 rounded-md text-center font-semibold text-lg tracking-wider px-2 mr-2"
             >
               Reset
             </button>
             <button
               type="submit"
-              class="btn bg-emerald-600 text-zinc-50 font-bold px-4 py-2 hover:bg-emerald-500 rounded-md text-center font-semibold text-lg tracking-wider px-2"
+              [ngClass]="{ 'bg-emerald-200': createForm.invalid }"
+              class="btn bg-emerald-600 text-zinc-50 font-bold px-4 py-2 rounded-md text-center font-semibold text-lg tracking-wider px-2"
             >
               Add
             </button>
