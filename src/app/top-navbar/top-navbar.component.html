@@ -16,6 +16,7 @@
   >
   <a
     [routerLink]="['create-product']"
+    *ngIf="isAdmin$ | async as isAdmin"
     class="btn text-primary font-bold my-auto p-2 rounded-full ml-2 border-primary md:border-2 hover:bg-primary border-[#059669] text-[#059669] hover:bg-[#059669] hover:text-zinc-50 transition ease-out duration-500"
     >Add Product</a
   >

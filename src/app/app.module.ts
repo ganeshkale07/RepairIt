@@ -17,6 +17,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 //import template driven form module
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { productSliceReducer } from "./state/app.reducer";
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    StoreModule.forRoot({productSliceState : productSliceReducer}, {}),
   ],
   providers: [],
   bootstrap: [AppComponent],

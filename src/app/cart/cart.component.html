@@ -4,7 +4,7 @@
   </h4>
 </header>
 
-<table
+<table *ngIf="cartItems;else cartIsEmpty"
   class="min-w-full bg-white rounded-lg overflow-hidden shadow-md mt-8 text-md"
 >
   <thead class="bg-gray-200">
@@ -39,12 +39,29 @@
       <td class="py-3 px-4 text-right">Order Address</td>
       <td class="py-3 px-4">
         <textarea
-          class="border-2 border-emerald-600"
+          class="border-2 border-emerald-600 p-2"
           rows="2"
           cols="40"
+          placeholder="...."
+          [(ngModel)]="shippingAddress"
+          #shippingAddVal="ngModel"
+          pattern="/^(\d{1,}) [a-zA-Z0-9\s]+(\,)? [a-zA-Z]+(\,)? [A-Z]{2} [0-9]{5,6}$/"
+          required
         ></textarea>
+        <p><span
+          *ngIf="shippingAddVal.invalid && shippingAddVal.dirty && shippingAddVal.touched"
+          class="text-rose-600"
+        > 
+        Invalid format 
+        </span>
+        <span *ngIf="shippingAddVal.invalid && shippingAddVal.errors?.['required'] && shippingAddVal.dirty && shippingAddVal.touched"
+        class="text-rose-600">
+        Required field
+        </span>
+      </p>
       </td>
     </tr>
+
 
     <!-- Row 3 -->
     <tr class="bg-gray-100">
@@ -61,10 +78,18 @@
           type="button"
           class="btn bg-emerald-600 text-zinc-50 text-lg font-bold px-4 py-2 hover:bg-emerald-500 rounded-full"
           [routerLink]="['/orders']"
-        >
+          (click)="placeAnOrder(cartItems)"
+          [disabled]="!shippingAddress">
           Order Now
         </button>
       </td>
     </tr>
   </tbody>
 </table>
+
+<ng-template #cartIsEmpty>
+<div class="flex items-center justify-center user-info-message">
+    <p class="text-gray-600 mt-15 text-4xl font-bold">Your cart is <span class="text-emerald-400">Empty for now!</span> :(</p>
+</div>
+
+</ng-template>

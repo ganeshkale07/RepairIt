@@ -28,6 +28,7 @@
           stroke-width="1.5"
           stroke="currentColor"
           class="w-6 h-6 absolute right-1 bottom-0"
+          *ngIf="isAdmin$ | async as isAdmin"
         >
           <path
             stroke-linecap="round"
@@ -43,6 +44,7 @@
           stroke-width="1.5"
           stroke="currentColor"
           class="w-6 h-6 absolute right-8 bottom-0"
+          *ngIf="isAdmin$ | async as isAdmin"
           [routerLink]="['/edit-product']"
         >
           <path

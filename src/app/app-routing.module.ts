@@ -43,7 +43,7 @@ const routes: Routes = [
     component: EditProductComponent,
   },
   {
-    path: '*',
+    path: '**',
     redirectTo: '',
   },
 ];
