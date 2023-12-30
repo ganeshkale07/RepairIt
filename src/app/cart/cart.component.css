@@ -1,3 +1,15 @@
 .user-info-message {
     min-height: 60%;
 }
+
+
+.cart-btn-container img {
+    max-width: 1.2rem;
+    min-height: 1.2rem;
+    margin: 0 2px;
+}
+
+
+.cart-btn-container img:first-of-type {
+    margin: 0 0px;
+}

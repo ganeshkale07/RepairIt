@@ -9,7 +9,7 @@
         >RepairIt</a
       >
     </h1>
-    <div class="px-4 cursor-pointer md:hidden" id="burger">
+    <div class="px-4 cursor-pointer md:hidden" id="burger" (click)="toggleWaffleMenu()">
       <svg
         class="w-6 h-6"
         fill="none"
@@ -23,7 +23,7 @@
       </svg>
     </div>
   </div>
-  <ul class="text-sm mt-6 hidden md:block" id="menu">
+  <ul class="text-sm mt-6 md:block" [hidden]="hideWaffleMenu" id="menu">
     <li class="text-emerald-400 text-xl py-2">
       <a
         [routerLink]="['/']"

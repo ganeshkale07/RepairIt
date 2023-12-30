@@ -17,8 +17,8 @@ export class MenuComponent implements OnInit {
   constructor(private Store :Store<State>,private productService: ProductService) {}
 
   //on Add button click
-  addToolToCart(id: number) {
-    this.productService.emitSelectedProductIntoStream(id);
+  addToolToCart(passedId: number, passedFlag : boolean) {
+    this.productService.emitSelectedProductIntoStream( { passedId , passedFlag } );
   }
 
   ngOnInit(): void {

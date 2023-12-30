@@ -10,6 +10,8 @@ export const getAllOrders = createSelector(getProductSliceState ,(state) => stat
 
 export const isAdminLoggedIn = createSelector(getProductSliceState,(state:State) => state.isAdmin);
 
+export const getCartItem = createSelector(getProductSliceState,(state:State) => state.cartItem);
+
 export const productSliceReducer = createReducer(InitialState,
     on(productActions.createNewOrder , (state,orderInfo):State => {
         if(state.order){
@@ -23,4 +25,11 @@ export const productSliceReducer = createReducer(InitialState,
                 order : [orderInfo.order]
             }
         }
-    })) 
+    }),
+    on(productActions.updateCart,(state,products) => {
+        return{
+            ...state,
+            cartItem : products.products ? [...products.products] : null
+        }
+    })
+    ) 

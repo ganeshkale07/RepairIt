@@ -21,7 +21,6 @@ export class TopNavbarComponent implements OnInit {
   ngOnInit(){
     this.cartItem$ = this.productService.cartList$.pipe(
       tap((product) => {
-        console.log('Added Product', product);
         this.productService.productAddedCartList = product;
       })
     );
